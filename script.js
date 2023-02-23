@@ -15,6 +15,14 @@ function getComputerChoice() {
   return compChoice;
 }
 
+function getPlayerChoice() {
+  //get Player Choice from HTML
+  const playerChoice = document.getElementById("playerOption").value;
+
+  //alert(playerChoice);
+  return playerChoice;
+}
+
 /*  Write a function that plays a single round of Rock Paper Scissors. 
 The function should take two parameters - the playerSelection and computerSelection
  - and then return a string that declares the winner of the round like so: "You Lose! Paper beats Rock */
