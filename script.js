@@ -19,21 +19,6 @@ let playerSelection;
 let computerSelection;
 let result;
 
-function playRound(playerSelection, computerSelection) {
-  //alert("Im In");
-  if (playerSelection == computerSelection) return 2;
-  else if (playerSelection == "Rock" && computerSelection == "Paper") return 0;
-  else if (playerSelection == "Rock" && computerSelection == "Scissors")
-    return 1;
-  else if (playerSelection == "Paper" && computerSelection == "Scissors")
-    return 0;
-  else if (playerSelection == "Paper" && computerSelection == "Rock") return 1;
-  else if (playerSelection == "Scissors" && computerSelection == "Rock")
-    return 0;
-  else if (playerSelection == "Scissors" && computerSelection == "Paper")
-    return 1;
-}
-
 function getPlayerChoice() {
   //get Player Choice from HTML
   const playerChoice = document.getElementById("playerOption").value;
@@ -48,26 +33,47 @@ function getPlayerChoice() {
   //alert(result);
   if (result == 2)
     alert(
-      "It's a Draw! You Chose " +
-        playerSelection +
-        " and Computer also Chose " +
-        computerSelection
+      `It's a Draw! You Chose ${playerSelection} and Computer also Chose ${computerSelection}`
     );
   else if (result == 1)
     alert(
-      "You Win! You Chose " +
-        playerSelection +
-        " and Computer Chose " +
-        computerSelection
+      `You Win! You Chose ${playerSelection} and Computer Chose ${computerSelection}`
     );
   else if (result == 0)
-    alert(
-      "You Lose! You Chose " +
-        playerSelection +
-        " and Computer Chose " +
-        computerSelection
+    console.log(
+      `You Lose! You Chose ${playerSelection} and Computer Chose ${computerSelection}`
     );
 }
+
+function playRound(playerSelection, computerSelection) {
+  //alert("Im In");
+  if (playerSelection == computerSelection) {
+    return 2;
+  } else if (
+    (playerSelection == "Rock" && computerSelection == "Scissors") ||
+    (playerSelection == "Paper" && computerSelection == "Rock") ||
+    (playerSelection == "Scissors" && computerSelection == "Paper")
+  ) {
+    return 1;
+  } else {
+    return 0;
+  }
+}
+
+const rockButton = document.getElementById("rockButton");
+const paperButton = document.getElementById("paperButton");
+const scissorsButton = document.getElementById("scissorsButton");
+const currentPoints = document.getElementById("currentPoints");
+const whoChoseWhat = document.getElementById("whoChoseWhat");
+const whoWon = document.getElementById("whoWon");
+const finalWinner = document.getElementById("finalWinner");
+
+rockButton.addEventListener("click", playRound("Rock", computerSelection));
+paperButton.addEventListener("click", playRound("Paper", computerSelection));
+scissorsButton.addEventListener(
+  "click",
+  playRound("Scissors", computerSelection)
+);
 
 /*  Write a function that plays a single round of Rock Paper Scissors. 
 The function should take two parameters - the playerSelection and computerSelection

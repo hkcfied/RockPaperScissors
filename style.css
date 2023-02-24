@@ -1,9 +1,20 @@
 .heading {
   display: flex;
   justify-content: center;
-  color: white;
 }
 
 * {
-  background-color: blueviolet;
+  background-color: azure;
+}
+
+.buttons {
+  justify-content: center;
+
+  display: flex;
+}
+
+#rockButton,
+#paperButton,
+#scissorsButton {
+  margin: 10px;
 }
