@@ -38,28 +38,53 @@ let playerScore = 0;
 let computerScore = 0;
 
 function playRound(playerSelection) {
-  roundCount++;
-  computerSelection = getComputerChoice();
-  if (playerSelection === computerSelection) {
-    result = 2;
-  } else if (
-    (playerSelection === "Rock" && computerSelection === "Scissors") ||
-    (playerSelection === "Paper" && computerSelection === "Rock") ||
-    (playerSelection === "Scissors" && computerSelection === "Paper")
-  ) {
-    result = 1;
-    playerScore++;
+  if (playerScore < 5 && computerScore < 5) {
+    roundCount++;
+    computerSelection = getComputerChoice();
+    if (playerSelection === computerSelection) {
+      result = 2;
+    } else if (
+      (playerSelection === "Rock" && computerSelection === "Scissors") ||
+      (playerSelection === "Paper" && computerSelection === "Rock") ||
+      (playerSelection === "Scissors" && computerSelection === "Paper")
+    ) {
+      result = 1;
+      playerScore++;
+    } else {
+      result = 0;
+      computerScore++;
+    }
+    updatePage(playerSelection, computerSelection);
   } else {
-    result = 0;
-    computerScore++;
+    reset();
   }
-
-  updatePage(playerSelection, computerSelection);
 }
 
 function updatePage(playerSelection, computerSelection) {
   if (result == 2) whoWon.textContent = `It's a Draw!`;
-  else if (result == 1) whoWon.textContent = `You Win!`;
-  else if (result == 0) whoWon.textContent = `You Lose!`;
+  else if (result == 1) {
+    whoWon.textContent = `You Got a Point!`;
+    currentPoints.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+  } else if (result == 0) {
+    whoWon.textContent = `Computer Got a Point!`;
+    currentPoints.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
+  }
   whoChoseWhat.textContent = `You Chose ${playerSelection} and Computer Chose ${computerSelection}`;
+  finalCheck();
+}
+
+function finalCheck() {
+  if (playerScore === 5 || computerScore === 5) {
+    if (playerScore === 5) finalWinner.textContent = "You are the Winner";
+    else if (computerScore === 5) {
+      finalWinner.textContent = "Computer is the Winner";
+      reset();
+    }
+  }
+}
+
+function reset() {
+  playerScore = 0;
+  computerScore = 0;
+  currentPoints.textContent = `Player: ${playerScore} Computer: ${computerScore}`;
 }
