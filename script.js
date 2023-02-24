@@ -59,8 +59,7 @@ function playRound(playerSelection) {
 
 function updatePage(playerSelection, computerSelection) {
   if (result == 2) whoWon.textContent = `It's a Draw!`;
-  else if (result == 1)
-    whoWon.textContent = `You Win! You Chose ${playerSelection} and Computer Chose ${computerSelection}`;
-  else if (result == 0)
-    whoWon.textContent = `You Lose! You Chose ${playerSelection} and Computer Chose ${computerSelection}`;
+  else if (result == 1) whoWon.textContent = `You Win!`;
+  else if (result == 0) whoWon.textContent = `You Lose!`;
+  whoChoseWhat.textContent = `You Chose ${playerSelection} and Computer Chose ${computerSelection}`;
 }
