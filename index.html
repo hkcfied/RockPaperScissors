@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <link href="style.css" rel="stylesheet" />
-    <script src="script.js"></script>
+
     <meta charset="utf-8" />
     <title>Rock Paper Scissors with JS</title>
   </head>
@@ -16,26 +16,19 @@
       <h2>Choose your option</h2>
     </div>
 
-    <!-- <div class="heading">
-      <select id="playerOption">
-        <option value="Rock">Rock</option>
-        <option value="Paper">Paper</option>
-        <option value="Scissors">Scissors</option>
-      </select>
-      <button onclick="getPlayerChoice()">Submit</button>
-    </div> -->
-
     <div class="buttons">
       <button id="rockButton">Rock</button>
       <button id="paperButton">Paper</button>
       <button id="scissorsButton">Scissors</button>
     </div>
 
-    <div>
+    <div class="buttons">
       <p id="currentPoints"></p>
       <p id="whoChoseWhat"></p>
-      <p id="whoWon"></p>
+      <p id="whoWon">Player:0 Computer:0</p>
       <p id="finalWinner"></p>
+
+      <script src="script.js"></script>
     </div>
   </body>
 </html>
