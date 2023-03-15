@@ -17,6 +17,7 @@
 #paperButton,
 #scissorsButton {
   margin: 10px;
+  font-size: 50px;
 }
 
 .results {
